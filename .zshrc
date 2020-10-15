@@ -54,7 +54,6 @@ bindkey -M viins '\e[2~' quoted-insert
 
 alias vim=nvim
 alias r=radian
-alias ls='ls -G'
 
 #######################################################
 # Suffix aliases
