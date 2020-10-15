@@ -9,14 +9,25 @@ autoload -Uz compinit zmv zcalc colors
 compinit
 colors
 
+
+#######################################################
+# Local custom settings
+# 
+
+if [ -f ~/.zshrc_custom ]; then
+    source ~/.zshrc_custom
+fi
+
 #######################################################
 # Environmental variables
 #
 
-export PATH=$PATH:$HOME/bin
 export PAGER='less'
 export EDITOR='vim'
 export GITPATH=`which git`
+export VOLTA_HOME=$HOME/.volta
+export CARGO_HOME=$HOME/.cargo
+export PATH=$VOLTA_HOME/bin:$PATH:$CARGO_HOME/bin:$HOME/bin
 
 
 #######################################################
@@ -42,6 +53,7 @@ bindkey -M viins '\e[2~' quoted-insert
 #
 
 alias vim=nvim
+alias r=radian
 alias ls='ls -G'
 
 #######################################################
@@ -71,3 +83,5 @@ alias config="$GITPATH --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 # Funksjoner
 #
 
+alias exercism_setup='mkdir build && cd build && cmake ..'
+alias exercism_watch='fswatch -o ../*.{cpp,h} | xargs -n1 -I{} sh -c "printf \"]1337;ClearScrollback\" && make"'
