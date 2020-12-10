@@ -28,7 +28,7 @@ export GITPATH=`which git`
 export VOLTA_HOME=$HOME/.volta
 export CARGO_HOME=$HOME/.cargo
 export PATH=$VOLTA_HOME/bin:$PATH:$CARGO_HOME/bin:$HOME/bin
-
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 #######################################################
 # Key bindings
