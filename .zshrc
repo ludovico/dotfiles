@@ -54,6 +54,7 @@ bindkey -M viins '\e[2~' quoted-insert
 
 alias vim=nvim
 alias r=radian
+alias diary='vim ~/Projects/Diary/`date +%Y-%m-%d.md`'
 
 #######################################################
 # Suffix aliases
