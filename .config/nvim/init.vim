@@ -20,6 +20,7 @@ if has('mouse')
 endif
 
 set wildmenu
+set wildmode=list:longest,full
 set incsearch
 set smartcase
 set ignorecase
@@ -33,7 +34,10 @@ Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'tpope/vim-fugitive'
 Plug 'morhetz/gruvbox'
+Plug 'APZelos/blamer.nvim'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 colorscheme gruvbox
@@ -43,6 +47,14 @@ augroup mdbindings
   autocmd Filetype markdown map <buffer> <silent> gf :e <cfile><CR>
 augroup end
 
+let g:blamer_enabled = 1
+let g:blamer_delay = 200
+let g:blamer_show_in_insert_modes = 0
+let g:blamer_show_in_visual_modes = 0
+
+let g:sessions_dir = '~/.vimsessions'
+exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
+exec 'nnoremap <Leader>sr :so ' . g:sessions_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
 
 " /// ---------------- ///
 " /// CoC.vim settings
@@ -171,7 +183,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
