@@ -25,9 +25,7 @@ fi
 export PAGER='less'
 export EDITOR='vim'
 export GITPATH=`which git`
-export VOLTA_HOME=$HOME/.volta
 export CARGO_HOME=$HOME/.cargo
-export PATH=$VOLTA_HOME/bin:$PATH:$CARGO_HOME/bin:$HOME/bin
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 #######################################################
@@ -55,6 +53,8 @@ bindkey -M viins '\e[2~' quoted-insert
 alias vim=nvim
 alias r=radian
 alias diary='vim ~/Projects/Diary/`date +%Y-%m-%d.md`'
+alias start_env='source env/bin/activate'
+alias tms='tmux_session'
 
 #######################################################
 # Suffix aliases
@@ -85,3 +85,19 @@ alias config="$GITPATH --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 alias exercism_setup='mkdir build && cd build && cmake ..'
 alias exercism_watch='fswatch -o ../*.{cpp,h} | xargs -n1 -I{} sh -c "printf \"]1337;ClearScrollback\" && make"'
+
+function tmux_session {
+  tmux attach -t $1 || tmux new -s $1
+}
+
+export RUST_HOME="$HOME/.cargo/bin"
+export PATH="$RUST_HOME/bin:$PATH"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PATH:$HOME/bin"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+ eval "$(pyenv init -)"
+fi
