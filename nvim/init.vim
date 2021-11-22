@@ -11,21 +11,24 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set smartindent
+set termguicolors
 set smarttab
 set encoding=utf-8
 set hlsearch
 set list
-
+set listchars=tab:▸\ ,trail:·
 set nocompatible	" Use Vim defaults (much better!)
 set ai			" always set autoindenting on
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 set wildmenu
 set wildmode=list:longest,full
 set incsearch
 set smartcase
+set relativenumber
 set ignorecase
 set hidden
 set foldmethod=manual
@@ -57,25 +60,33 @@ map gf :edit <cfile><cr>
 " Plugins
 " -----------------------------------------------
 
-" Autoinstall vim-plug
-" let data_dir
+" Automatically install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin(data_dir . '/plugins')
+
+source ~/.config/nvim/plugins/nvim-lspconfig.vim
+source ~/.config/nvim/plugins/plenary.vim
 
 source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/ag.vim
-source ~/.config/nvim/plugins/vim-jsx-pretty.vim
-source ~/.config/nvim/plugins/nvim-lspconfig.vim
+source ~/.config/nvim/plugins/typescript.vim
 source ~/.config/nvim/plugins/commentary.vim
-source ~/.config/nvim/plugins/gruvbox.vim
+" source ~/.config/nvim/plugins/gruvbox.vim
 source ~/.config/nvim/plugins/vim-airline.vim
+source ~/.config/nvim/plugins/nerdtree.vim
+source ~/.config/nvim/plugins/styled-components.vim
 source ~/.config/nvim/plugins/tabular.vim
 source ~/.config/nvim/plugins/vim-markdown.vim
 
 call plug#end()
 
 lua require("lsp-config")
-colorscheme gruvbox
+" colorscheme gruvbox
 
 augroup mdbindings
   autocmd! mdbindings

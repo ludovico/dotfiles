@@ -1,0 +1,2 @@
+Plug 'preservim/nerdtree'
+
