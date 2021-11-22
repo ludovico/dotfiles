@@ -10,7 +10,7 @@
 - link:
     ~/.config/nvim:
         create: true
-        path: config/nvim
+        path: nvim
     ~/.dotfiles: ''
     ~/.tmux.conf: tmux.conf
     ~/.zshrc: zshrc
