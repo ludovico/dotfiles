@@ -1,7 +1,8 @@
-set nocompatible	" Use Vim defaults (much better!)
-set ai			" always set autoindenting on
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
+" MAIN VIM CONFIG
+
+" -----------------------------------------------
+" General Settings
+" -----------------------------------------------
 
 syntax on
 
@@ -13,11 +14,13 @@ set smartindent
 set smarttab
 set encoding=utf-8
 set hlsearch
+set list
 
-if has('mouse') 
-	"set ttymouse=xterm2
-	set mouse=a
-endif
+set nocompatible	" Use Vim defaults (much better!)
+set ai			" always set autoindenting on
+set history=50		" keep 50 lines of command line history
+set ruler		" show the cursor position all the time
+
 
 set wildmenu
 set wildmode=list:longest,full
@@ -27,17 +30,48 @@ set ignorecase
 set hidden
 set foldmethod=manual
 
+set scrolloff=8
+set sidescrolloff=8
+set nojoinspaces
+
+if has('mouse') 
+	"set ttymouse=xterm2
+	set mouse=a
+endif
+
+
+" -----------------------------------------------
+" Key Maps
+" -----------------------------------------------
+
+
+let mapleader = "\<space>"
+
+nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
+nmap <leader>vr :source ~/.config/nvim/init.vim<cr>
+
+map gf :edit <cfile><cr>
+
+
+" -----------------------------------------------
+" Plugins
+" -----------------------------------------------
+
+" Autoinstall vim-plug
+" let data_dir
+
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'albfan/ag.vim'
-Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
-Plug 'neovim/nvim-lspconfig'
-Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
-Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+
+source ~/.config/nvim/plugins/fzf.vim
+source ~/.config/nvim/plugins/ag.vim
+source ~/.config/nvim/plugins/vim-jsx-pretty.vim
+source ~/.config/nvim/plugins/nvim-lspconfig.vim
+source ~/.config/nvim/plugins/commentary.vim
+source ~/.config/nvim/plugins/gruvbox.vim
+source ~/.config/nvim/plugins/vim-airline.vim
+source ~/.config/nvim/plugins/tabular.vim
+source ~/.config/nvim/plugins/vim-markdown.vim
+
 call plug#end()
 
 lua require("lsp-config")
