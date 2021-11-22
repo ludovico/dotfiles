@@ -77,7 +77,6 @@ alias -s bz2='tar -xjvf'
 alias -s java=$EDITOR
 alias -s txt=$EDITOR
 alias -s PKGBUILD=$EDITOR
-alias config="$GITPATH --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 #######################################################3
 # Funksjoner
