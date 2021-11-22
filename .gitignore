@@ -1,3 +1,5 @@
-.cfg
-.ssh
+
+config/nvim/.netrwhist
+
+# Mac specific
 .DS_Store
