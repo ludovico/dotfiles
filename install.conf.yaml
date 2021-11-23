@@ -14,6 +14,7 @@
     ~/.dotfiles: ''
     ~/.tmux.conf: tmux.conf
     ~/.zshrc: zshrc
+    ~/bin: bin
     ~/.xinitrc:
         if: '[ `uname` = Linux ]'
         path: xinitrc
