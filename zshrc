@@ -14,8 +14,8 @@ colors
 # Local custom settings
 # 
 
-if [ -f ~/.zshrc_custom ]; then
-    source ~/.zshrc_custom
+if [ -f ~/.zshrc_local ]; then
+    source ~/.zshrc_local
 fi
 
 #######################################################
