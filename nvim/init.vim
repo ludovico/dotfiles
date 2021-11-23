@@ -52,6 +52,9 @@ let mapleader = "\<space>"
 
 nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
 nmap <leader>vr :source ~/.config/nvim/init.vim<cr>
+nmap <leader>t :NERDTreeFind<CR>
+
+noremap <C-p> :FZF<CR>
 
 map gf :edit <cfile><cr>
 
@@ -69,19 +72,20 @@ endif
 
 call plug#begin(data_dir . '/plugins')
 
-source ~/.config/nvim/plugins/nvim-lspconfig.vim
+source ~/.config/nvim/plugins/lspconfig.vim
 source ~/.config/nvim/plugins/plenary.vim
 
 source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/ag.vim
 source ~/.config/nvim/plugins/typescript.vim
 source ~/.config/nvim/plugins/commentary.vim
+source ~/.config/nvim/plugins/floaterm.vim
 " source ~/.config/nvim/plugins/gruvbox.vim
-source ~/.config/nvim/plugins/vim-airline.vim
+source ~/.config/nvim/plugins/airline.vim
 source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/styled-components.vim
 source ~/.config/nvim/plugins/tabular.vim
-source ~/.config/nvim/plugins/vim-markdown.vim
+source ~/.config/nvim/plugins/markdown.vim
 
 call plug#end()
 
