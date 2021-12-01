@@ -42,11 +42,7 @@ if has('mouse')
 	set mouse=a
 endif
 
-" Use ag (the silver searcher) with grep
-if executable('ag')
-  set grepprg=ag\ --vimgrep\ $*
-  set grepformat^=%f:%l:%c:%m
-endif
+source ~/.config/nvim/custom/grep.vim
 
 " -----------------------------------------------
 " Key Maps
@@ -58,8 +54,6 @@ let mapleader = "\<space>"
 nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
 nmap <leader>vr :source ~/.config/nvim/init.vim<cr>
 nmap <leader>t :NERDTreeFind<CR>
-
-noremap <C-p> :FZF<CR>
 
 map gf :edit <cfile><cr>
 
@@ -79,7 +73,6 @@ call plug#begin(data_dir . '/plugins')
 
 source ~/.config/nvim/plugins/lspconfig.vim
 source ~/.config/nvim/plugins/plenary.vim
-
 source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/ag.vim
 source ~/.config/nvim/plugins/typescript.vim
