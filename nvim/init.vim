@@ -87,7 +87,7 @@ source ~/.config/nvim/plugins/markdown.vim
 
 call plug#end()
 
-lua require("lsp-config")
+" lua require("lsp-config")
 " colorscheme gruvbox
 
 augroup mdbindings

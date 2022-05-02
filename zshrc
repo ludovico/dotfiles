@@ -91,12 +91,14 @@ function tmux_session {
 
 export RUST_HOME="$HOME/.cargo/bin"
 export PATH="$RUST_HOME/bin:$PATH"
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+#export VOLTA_HOME="$HOME/.volta"
+#export PATH="$VOLTA_HOME/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$PATH:$HOME/.dotfiles/bin"
 
 if command -v pyenv 1>/dev/null 2>&1; then
  eval "$(pyenv init -)"
+ eval "$(pyenv virtualenv-init -)"
 fi
+eval $(thefuck --alias)
