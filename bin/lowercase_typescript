@@ -1,0 +1,7 @@
+set -xe
+
+# Rename all file to lowerCamelCase
+zmv '(**/)([A-Z])(*)' '${1}${(L)2}${3}'
+
+# Change TypeScript imports accordingly
+find . -print0 | xargs -0 -n1 gsed -i "s/'\([\.,~].*\)\/\([A-Z]\)\(.*\)'/'\1\/\L\2\E\3'/g"

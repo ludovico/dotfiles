@@ -15,7 +15,6 @@
     ~/.tmux.conf: tmux.conf
     ~/.zshrc: zshrc
     ~/.zprofile: zprofile
-    ~/.zshenv: zshrc
     ~/bin: bin
     ~/.xinitrc:
         if: '[ `uname` = Linux ]'

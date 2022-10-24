@@ -76,6 +76,7 @@ source ~/.config/nvim/plugins/plenary.vim
 source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/ag.vim
 source ~/.config/nvim/plugins/typescript.vim
+source ~/.config/nvim/plugins/epl.vim
 source ~/.config/nvim/plugins/commentary.vim
 source ~/.config/nvim/plugins/floaterm.vim
 " source ~/.config/nvim/plugins/gruvbox.vim

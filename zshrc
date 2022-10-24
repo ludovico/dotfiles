@@ -11,9 +11,35 @@ colors
 
 
 #######################################################
+# PATH setup
+# 
+
+export RUST_HOME="$HOME/.cargo/bin"
+export PATH="$RUST_HOME/bin:$PATH"
+#export VOLTA_HOME="$HOME/.volta"
+#export PATH="$VOLTA_HOME/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PATH:$HOME/.dotfiles/bin"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+ eval "$(pyenv init -)"
+ eval "$(pyenv virtualenv-init -)"
+fi
+eval $(thefuck --alias)
+
+# bun completions
+[ -s "/Users/eivind/.bun/_bun" ] && source "/Users/eivind/.bun/_bun"
+
+# Bun
+export BUN_INSTALL="/Users/eivind/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+#######################################################
 # Local custom settings
 # 
 
+source ~/.zprofile
 if [ -f ~/.zshrc_local ]; then
     source ~/.zshrc_local
 fi
@@ -89,16 +115,3 @@ function tmux_session {
   tmux attach -t $1 || tmux new -s $1
 }
 
-export RUST_HOME="$HOME/.cargo/bin"
-export PATH="$RUST_HOME/bin:$PATH"
-#export VOLTA_HOME="$HOME/.volta"
-#export PATH="$VOLTA_HOME/bin:$PATH"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="$PATH:$HOME/.dotfiles/bin"
-
-if command -v pyenv 1>/dev/null 2>&1; then
- eval "$(pyenv init -)"
- eval "$(pyenv virtualenv-init -)"
-fi
-eval $(thefuck --alias)
