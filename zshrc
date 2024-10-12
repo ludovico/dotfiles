@@ -14,25 +14,24 @@ colors
 # PATH setup
 # 
 
-export RUST_HOME="$HOME/.cargo/bin"
-export PATH="$RUST_HOME/bin:$PATH"
-#export VOLTA_HOME="$HOME/.volta"
-#export PATH="$VOLTA_HOME/bin:$PATH"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="$PATH:$HOME/.dotfiles/bin"
+RUST_HOME="$HOME/.cargo/bin"
+PATH="$RUST_HOME/bin:$PATH"
+PYENV_ROOT="$HOME/.pyenv"
+PATH="$PYENV_ROOT/bin:$PATH"
+PATH="$PATH:$HOME/.dotfiles/bin"
+PATH="$PATH:$HOME/.dotfiles/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 if command -v pyenv 1>/dev/null 2>&1; then
  eval "$(pyenv init -)"
  eval "$(pyenv virtualenv-init -)"
 fi
-eval $(thefuck --alias)
 
 # bun completions
-[ -s "/Users/eivind/.bun/_bun" ] && source "/Users/eivind/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # Bun
-export BUN_INSTALL="/Users/eivind/.bun"
+export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 #######################################################
@@ -81,6 +80,7 @@ alias r=radian
 alias diary='vim ~/Projects/Diary/`date +%Y-%m-%d.md`'
 alias start_env='source env/bin/activate'
 alias tms='tmux_session'
+alias lg='lazygit'
 
 #######################################################
 # Suffix aliases
@@ -108,10 +108,14 @@ alias -s PKGBUILD=$EDITOR
 # Funksjoner
 #
 
-alias exercism_setup='mkdir build && cd build && cmake ..'
-alias exercism_watch='fswatch -o ../*.{cpp,h} | xargs -n1 -I{} sh -c "printf \"]1337;ClearScrollback\" && make"'
-
 function tmux_session {
   tmux attach -t $1 || tmux new -s $1
 }
 
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+#
+eval "$(zoxide init --cmd cd zsh)"
+source "$HOME/.cargo/env"

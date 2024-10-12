@@ -1,0 +1,46 @@
+---
+title: Studier
+---
+
+@@
+
+
+%Notes_
+%Reminders_
+%Mail_
+%Spotify
+
+Orion
+iTerm2_
+!!!Orion
+!!!iTerm2
+
+?{
+    STK-IN4300 => <<#STK-IN4300
+    STK4021 => <<#STK4021
+    IN5040 => <<#IN5040
+} "Hvilket fag?"
+
+___
+
+------------------------------------------------------------[STK-IN4300]-
+!Rstudio
+@Rstudio
+- XX
+- ~/Code/uio/code/stk-in4300/mand2/mand2.Rproj
+
+---------------------------------------------------------------[STK4021]-
+!Rstudio
+@Rstudio
+- XX
+- ~/Code/uio/code/stk4021/mand1/mand1.Rproj
+
+----------------------------------------------------------------[IN5040]-
+!Visual Studio Code
+@Visual Studio Code
+- XX
+- ~/Code/uio/code/in5040
+
+Preview
+- ~/Code/uio/code/in5040/assignment2/in5040-assignment-2.pdf
+
