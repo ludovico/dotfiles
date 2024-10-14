@@ -13,6 +13,7 @@
         path: nvim
     ~/.dotfiles: ''
     ~/.tmux.conf: tmux.conf
+    ~/.tmux.conf.local: tmux.conf.local
     ~/.tmux: tmux
     ~/.zshrc: zshrc
     ~/.zprofile: zprofile
