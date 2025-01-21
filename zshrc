@@ -80,6 +80,7 @@ alias r=radian
 alias diary='vim ~/Projects/Diary/`date +%Y-%m-%d.md`'
 alias start_env='source env/bin/activate'
 alias tms='tmux_session'
+alias wiki='vim ~/Nextcloud/wiki/index.md'
 alias lg='lazygit'
 
 #######################################################
@@ -113,8 +114,11 @@ function tmux_session {
 }
 
 # pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+export PNPM_HOME="/Users/eivind/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 # pnpm end
 #
 eval "$(zoxide init --cmd cd zsh)"

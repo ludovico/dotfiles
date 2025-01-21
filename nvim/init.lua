@@ -943,7 +943,7 @@ require("lazy").setup({
 	-- require 'kickstart.plugins.indent_line',
 	-- require 'kickstart.plugins.lint',
 	-- require 'kickstart.plugins.autopairs',
-	-- require 'kickstart.plugins.neo-tree',
+	require("kickstart.plugins.neo-tree"),
 	-- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -973,6 +973,21 @@ require("lazy").setup({
 		},
 	},
 })
+
+function TexFocusVim()
+	-- Replace `TERMINAL` with the name of your terminal application
+	-- Example: os.execute("open -a iTerm")
+	-- Example: os.execute("open -a Alacritty")
+	os.execute("open -a iTerm")
+	vim.cmd("redraw!")
+end
+
+vim.cmd([[
+augroup vimtex_event_focus
+  autocmd!
+  autocmd User VimtexEventViewReverse call TexFocusVim()
+augroup END
+]])
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

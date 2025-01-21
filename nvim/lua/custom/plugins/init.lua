@@ -43,4 +43,75 @@ return {
 			vim.g.taskwiki_markup_syntax = "markdown"
 		end,
 	},
+	{
+		"bullets-vim/bullets.vim",
+		lazy = false,
+	},
+	{
+		"lervag/vimtex",
+		lazy = false, -- we don't want to lazy load VimTeX
+		-- tag = "v2.15", -- uncomment to pin to a specific release
+		init = function()
+			-- VimTeX configuration goes here, e.g.
+			vim.g.vimtex_view_method = "skim"
+			vim.g.vimtex_compiler_latexmk = {
+				build_dir = "",
+				callback = 1,
+				continuous = 1,
+				executable = "latexmk",
+				options = {
+					"-pdf", -- Compile to PDF
+					"-shell-escape", -- Allow external commands
+					"-verbose", -- Verbose output
+					"-file-line-error", -- Detailed error messages
+					"-synctex=1", -- SyncTeX for source-pdf navigation
+					"-interaction=nonstopmode", -- Nonstop mode (continue after errors)
+					"-use-make", -- Use makeindex for nomenclature
+				},
+				-- Add custom command to handle the nomenclature index
+				hooks = {},
+			}
+		end,
+	},
+	{
+		"jalvesaq/zotcite",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-telescope/telescope.nvim",
+		},
+		config = function()
+			require("zotcite").setup({
+				-- your options here (see doc/zotcite.txt)
+			})
+		end,
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				sync_install = true,
+				ensure_installed = {
+					"html",
+					"latex",
+					"markdown",
+					"markdown_inline",
+					"yaml",
+				},
+				highlight = {
+					enable = true,
+				},
+				indent = {
+					enable = true,
+				},
+			})
+			vim.o.foldmethod = "expr"
+			vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+			vim.o.foldenable = false
+		end,
+	},
+	{
+		"dart-lang/dart-vim-plugin",
+	},
 }

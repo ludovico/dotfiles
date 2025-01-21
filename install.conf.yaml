@@ -11,6 +11,9 @@
     ~/.config/nvim:
         create: true
         path: nvim
+    ~/.config/ghostty/config:
+        create: true
+        path: ghostty
     ~/.dotfiles: ''
     ~/.tmux.conf: tmux.conf
     ~/.tmux.conf.local: tmux.conf.local
