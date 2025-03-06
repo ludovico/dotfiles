@@ -1,0 +1,27 @@
+# vim: filetype=neomuttrc
+source /usr/local/share/mutt-wizard/mutt-wizard.muttrc
+source /Users/eivind/.config/mutt/accounts/eivind.skretting@mailbox.org.muttrc
+macro index,pager i1 '<sync-mailbox><enter-command>source /Users/eivind/.config/mutt/accounts/eivind.skretting@mailbox.org.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to eivind.skretting@mailbox.org"
+
+# Folder overrides
+macro index,pager ga "<change-folder>=Archive/2025<enter>" "go to archive"
+macro index,pager Ma ";<save-message>=Archive/2025<enter>" "move mail to archive"
+macro index,pager Ca ";<copy-message>=Archive/2025<enter>" "copy mail to archive"
+
+# Sidebar
+set sidebar_component_depth=2
+
+# Mail index
+set sort = reverse-threads
+set strict_threads = yes  # Ensures proper thread grouping
+set sleep_time = 0        # Speeds up threading in large mailboxes
+
+#set mailcap_path = $HOME/.config/mutt/mailcap
+set text_flowed = yes
+#set query_command="/opt/homebrew/bin/lbdbq '%s'"
+set query_command="khard email --parsable --search-in-source-files '%s'"
+set pager_index_lines = 12  
+set index_format="%2C %Z %?X?📎&  ? %D %-15.15F %s (%-4.4c)"
+
+macro index \eg "<enter-command>unset wait_key<enter><shell-escape>gpg --list-secret-keys; printf 'Enter email ID of user to publish: '; read eID; printf 'Enter fingerprint of GPG key to publish: '; read eFGPT; gpg-wks-client --create $eFGPT $eID | msmtp --read-envelope-from --read-recipients -a $fulladdr<enter>"  "publish GPG key to WKS provider"
+macro index \eh "<pipe-message>gpg-wks-client --receive | msmtp --read-envelope-from --read-recipients -a $fulladdr<enter>" "confirm GPG publication"

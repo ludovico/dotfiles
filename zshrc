@@ -82,6 +82,7 @@ alias start_env='source env/bin/activate'
 alias tms='tmux_session'
 alias wiki='vim ~/Nextcloud/wiki/index.md'
 alias lg='lazygit'
+alias ls='eza --icons=auto'
 
 #######################################################
 # Suffix aliases

@@ -14,6 +14,18 @@
     ~/.config/ghostty/config:
         create: true
         path: ghostty
+    ~/.config/mutt:
+        create: true
+        path: mutt
+    ~/.config/vdirsyncer/config:
+        create: true
+        path: vdirsyncer/config
+    ~/.config/vdirsyncer/get-username.sh: vdirsyncer/get-username.sh
+    ~/.config/vdirsyncer/get-password.sh: vdirsyncer/get-password.sh
+    ~/.config/khard:
+        create: true
+        path: khard
+    ~/.mbsyncrc: mbsyncrc
     ~/.dotfiles: ''
     ~/.tmux.conf: tmux.conf
     ~/.tmux.conf.local: tmux.conf.local

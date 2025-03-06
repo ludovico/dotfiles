@@ -1,0 +1,4 @@
+text/html; open %s; nametemplate=%s.html;
+text/html; w3m -T text/html -O utf-8 %s;  copiousoutput; needsterminal;
+application/pdf; open %s; nametemplate=%s.pdf
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; open %s;

@@ -1,0 +1,44 @@
+[general]
+
+# A folder where vdirsyncer can store some metadata about each pair.
+status_path = "~/.config/vdirsyncer/status/"
+
+# CardDAV
+# =======
+
+# Operation Tulip
+# ---------------
+
+[pair nextcloud_contacts]
+# A `[pair <name>]` block defines two storages `a` and `b` that should be
+# synchronized. The definition of these storages follows in `[storage <name>]`
+# blocks. This is similar to accounts in OfflineIMAP.
+a = "nextcloud_contacts_local"
+b = "nextcloud_contacts_remote"
+
+# Synchronize all collections that can be found.
+# You need to run `vdirsyncer discover` if new calendars/addressbooks are added
+# on the server.
+collections = ["from a", "from b"]
+
+# Synchronize the "display name" property into a local file (~/.contacts/displayname).
+metadata = ["displayname"]
+
+# To resolve a conflict the following values are possible:
+#   `null` - abort when collisions occur (default)
+#   `"a wins"` - assume a's items to be more up-to-date
+#   `"b wins"` - assume b's items to be more up-to-date
+#conflict_resolution = null
+
+[storage nextcloud_contacts_local]
+# A storage references actual data on a remote server or on the local disk.
+# Similar to repositories in OfflineIMAP.
+type = "filesystem"
+path = "~/.config/vdirsyncer/contacts/"
+fileext = ".vcf"
+
+[storage nextcloud_contacts_remote]
+type = "carddav"
+url = "https://drive.ukorrekt.no/remote.php/dav/addressbooks/users/eivind/contacts/"
+username.fetch = ["command", "~/.config/vdirsyncer/get-username.sh"]
+password.fetch = ["command", "~/.config/vdirsyncer/get-password.sh"]

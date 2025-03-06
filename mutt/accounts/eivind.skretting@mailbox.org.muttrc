@@ -1,0 +1,20 @@
+# vim: filetype=neomuttrc
+# muttrc file for account eivind.skretting@mailbox.org
+set real_name = "Eivind Michael Skretting"
+set from = "eivind.skretting@mailbox.org"
+set sendmail = "msmtp -a eivind.skretting@mailbox.org"
+alias me Eivind Michael Skretting <eivind.skretting@mailbox.org>
+set folder = "/Users/eivind/.local/share/mail/eivind.skretting@mailbox.org"
+set header_cache = "/Users/eivind/.cache/mutt-wizard/eivind.skretting_mailbox.org/headers"
+set message_cachedir = "/Users/eivind/.cache/mutt-wizard/eivind.skretting_mailbox.org/bodies"
+set mbox_type = Maildir
+set hostname = "mailbox.org"
+source /usr/local/share/mutt-wizard/switch.muttrc
+set spool_file = "+INBOX"
+set postponed = "+Drafts"
+set trash = "+Trash"
+set record = "+Sent"
+
+macro index o "<shell-escape>mailsync eivind.skretting@mailbox.org<enter>" "sync eivind.skretting@mailbox.org"
+mailboxes "=INBOX" "=Trash" "=Junk" "=Sent" "=Drafts" "=INBOX/Forwarded" "=Archive/2025" "=Archive/2024" "=Archive/2023" "=Archive/2022" "=Archive/2021" "=Archive/2020"
+# virtual-mailboxes "All Archived Mail" "notmuch://Archive/query?lars"
