@@ -17,6 +17,15 @@
     ~/.config/mutt:
         create: true
         path: mutt
+    ~/.newsboat/config:
+        create: true
+        path: newsboat/config
+    ~/.newsboat/urls:
+        create: true
+        path: newsboat/urls
+    ~/.newsboat/styles:
+        create: true
+        path: newsboat/styles
     ~/.config/vdirsyncer/config:
         create: true
         path: vdirsyncer/config
