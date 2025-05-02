@@ -1,3 +1,16 @@
-https://rss.dw.com/rdf/rss-en-all
-https://rss.dw.com/rdf/rss-de-all
-https://wallabag.ukorrekt.no/feed/eivind/Z0gxgNjPUuRe2aT/unread
+"query:---NEWS---:tags # \"News\""
+https://rss.dw.com/rdf/rss-de-all "News" "Politics"
+https://www.nrk.no/norge/toppsaker.rss "News"
+
+"query:---POLITICS---:tags # \"Politics\""
+https://www.regjeringen.no/no/rss/Rss/2581966/ "Politics"
+https://www.stortinget.no/no/Stottemeny/RSS/Lovbeslutninger/ "Politics"
+https://www.stortinget.no/no/Stottemeny/RSS/Stortingsvedtak/ "Politics"
+https://www.stortinget.no/no/Stottemeny/RSS/Aktuelt-saker/ "Politics"
+https://politics.co.uk/feed "News" "Politics"
+
+"query:---READ/REVIEW---:tags # \"Articles\""
+https://wallabag.ukorrekt.no/feed/eivind/Z0gxgNjPUuRe2aT/unread "Articles"
+
+"query:---TECH---:tags # \"Tech\""
+https://stackoverflow.blog/feed/ "Tech"

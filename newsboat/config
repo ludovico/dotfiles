@@ -2,14 +2,14 @@
 browser "open %u"
 
 # Macro to fetch full article text using readability-cli
-macro w set browser "readable -s ~/.newsboat/styles/readable-style.css %u | w3m -T text/html" ; open-in-browser ; set browser "open %u"
-macro l set browser "readable -s ~/.newsboat/styles/readable-style.css %u | lynx -stdin" ; open-in-browser ; set browser "open %u"
-macro f set browser "readable -s ~/.newsboat/styles/readable-style.css %u | w3m -T text/html -dump -cols 72 | less" ; open-in-browser ; set browser "open %u"
-macro p set browser "newsboat-html2pdf.sh" ; open-in-browser ; set browser "open %u"
+macro w set browser "newsboat-url2html.sh %u | w3m -T text/html" ; open-in-browser ; set browser "open %u"
+macro l set browser "newsboat-url2html.sh %u | w3m -T text/html -dump -cols 72 | LESSBINDINGS='h quit' less" ; open-in-browser ; set browser "open %u"
+macro s set browser "newsboat-url2html.sh %u | w3m -T text/html -dump -cols 72 | speedread -w 300" ; open-in-browser ; set browser "open %u"
+macro p set browser "newsboat-url2pdf.sh %u" ; open-in-browser ; set browser "open %u"
 
 # externel browser
-macro m set browser "/usr/local/bin/mpv %u"; open-in-browser ; set browser "/usr/local/bin/w3m %u"
-macro e set browser "readable -s ~/.newsboat/styles/readable-style.css %u > /tmp/readability.html && open /tmp/readability.html"; open-in-browser ; set browser "open %u"
+macro m set browser "/opt/homebrew/bin/mpv %u"; open-in-browser ; set browser "/usr/local/bin/w3m %u"
+macro e set browser "newsboat-url2html.sh %u > /tmp/readability.html && open /tmp/readability.html"; open-in-browser ; set browser "open %u"
 
 # general settings
 auto-reload yes
@@ -42,3 +42,13 @@ color article            default   default
 highlight article "^(Title):.*$" blue default
 highlight article "https?://[^ ]+" red default
 highlight article "\\[image\\ [0-9]+\\]" green default
+
+#urls-source "ocnews"
+#ocnews-url "https://drive.ukorrekt.no"
+#ocnews-login "eivind"
+#ocnews-passwordeval "pass ukorrekt-news"
+#
+#highlight feedlist ".*0\/.*\s*[^-]" default default dim
+highlight feedlist "---.*---" yellow default bold
+highlight feedlist "(.*\/.*)\s*---" yellow default bold
+highlight feedlist ".*\\(0\/.*\s*---" yellow default dim

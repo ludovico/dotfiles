@@ -52,6 +52,7 @@ export EDITOR='vim'
 export GITPATH=`which git`
 export CARGO_HOME=$HOME/.cargo
 export FZF_DEFAULT_COMMAND='fd --type f'
+export NODE_COMPILE_CACHE="~/.cache/node-compile-cache"
 
 #######################################################
 # Key bindings
@@ -83,6 +84,8 @@ alias tms='tmux_session'
 alias wiki='vim ~/Nextcloud/wiki/index.md'
 alias lg='lazygit'
 alias ls='eza --icons=auto'
+alias mtask='task +master'
+alias atask='task +arundo'
 
 #######################################################
 # Suffix aliases
@@ -124,3 +127,5 @@ esac
 #
 eval "$(zoxide init --cmd cd zsh)"
 source "$HOME/.cargo/env"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

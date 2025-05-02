@@ -21,7 +21,9 @@ set text_flowed = yes
 #set query_command="/opt/homebrew/bin/lbdbq '%s'"
 set query_command="khard email --parsable --search-in-source-files '%s'"
 set pager_index_lines = 12  
+unignore X-Original-To
 set index_format="%2C %Z %?X?📎&  ? %D %-15.15F %s (%-4.4c)"
+#set index_format="%4C %Z %{%b %d} %X{X-Complaints-To} %s"
 
 macro index \eg "<enter-command>unset wait_key<enter><shell-escape>gpg --list-secret-keys; printf 'Enter email ID of user to publish: '; read eID; printf 'Enter fingerprint of GPG key to publish: '; read eFGPT; gpg-wks-client --create $eFGPT $eID | msmtp --read-envelope-from --read-recipients -a $fulladdr<enter>"  "publish GPG key to WKS provider"
 macro index \eh "<pipe-message>gpg-wks-client --receive | msmtp --read-envelope-from --read-recipients -a $fulladdr<enter>" "confirm GPG publication"
