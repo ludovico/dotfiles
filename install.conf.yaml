@@ -11,6 +11,9 @@
     ~/.config/nvim:
         create: true
         path: nvim
+    ~/.config/gitignore:
+        create: true
+        path: gitignore
     ~/.config/ghostty/config:
         create: true
         path: ghostty

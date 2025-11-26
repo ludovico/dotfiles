@@ -1,4 +1,5 @@
 export PROMPT='[%n@%m %c]$ '
+# export PROMPT='[%n@%m %c]'
 export HISTFILE=~/.zsh/histfile
 export HISTSIZE=50000
 export SAVEHIST=50000
@@ -78,13 +79,12 @@ bindkey -M viins '\e[2~' quoted-insert
 
 alias vim=nvim
 alias r=radian
-alias diary='vim ~/Projects/Diary/`date +%Y-%m-%d.md`'
+#alias diary='vim ~/Projects/Diary/`date +%Y-%m-%d.md`'
 alias start_env='source env/bin/activate'
 alias tms='tmux_session'
 alias wiki='vim ~/Nextcloud/wiki/index.md'
 alias lg='lazygit'
 alias ls='eza --icons=auto'
-alias mtask='task +master'
 alias atask='task +arundo'
 
 #######################################################
@@ -117,6 +117,11 @@ function tmux_session {
   tmux attach -t $1 || tmux new -s $1
 }
 
+eval "$(zoxide init --cmd cd zsh)"
+source "$HOME/.cargo/env"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 # pnpm
 export PNPM_HOME="/Users/eivind/Library/pnpm"
 case ":$PATH:" in
@@ -124,8 +129,3 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-#
-eval "$(zoxide init --cmd cd zsh)"
-source "$HOME/.cargo/env"
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"

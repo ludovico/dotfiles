@@ -1,0 +1,9 @@
+#!/bin/bash
+
+DIARY_PATH=$HOME/Nextcloud/diary/
+TODAY=$(date '+%Y'-%m-%d)
+
+FILE="${DIARY_PATH}/diary-${TODAY}.md"
+
+touch $FILE
+plumb $FILE

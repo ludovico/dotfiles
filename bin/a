@@ -1,0 +1,17 @@
+#!/bin/bash
+
+ARG="${1:--l $HOME/acme.dump}"
+
+echo $ARG
+
+pkill fontsrv
+pkill plumber
+
+fontsrv &
+plumber &
+sleep 1
+
+echo 'acme -f /mnt/font/Avenir-Medium/13a/font $ARG'
+acme -f /mnt/font/Avenir-Medium/13a/font $ARG
+#echo "$HOME/go/bin/edwood -F @12pt ${ARG}"
+#$HOME/go/bin/edwood -F @12pt ${ARG}
