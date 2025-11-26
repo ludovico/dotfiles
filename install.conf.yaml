@@ -23,6 +23,9 @@
     ~/.newsboat/config:
         create: true
         path: newsboat/config
+    ~/.notmuch-config:
+        create: true
+        path: notmuch-config
     ~/.newsboat/urls:
         create: true
         path: newsboat/urls

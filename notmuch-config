@@ -1,0 +1,14 @@
+[database]
+path=/Users/eivind/.local/share/mail
+[user]
+name=Eivind Michael Skretting
+primary_email=eivind.skretting@mailbox.org
+[new]
+tags=unread;inbox;
+ignore=.mbsyncstate;.uidvalidity
+[search]
+exclude_tags=deleted;spam;
+[maildir]
+synchronize_flags=true
+[crypto]
+gpg_path=gpg
