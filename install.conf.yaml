@@ -14,7 +14,7 @@
     ~/.config/gitignore:
         create: true
         path: gitignore
-    ~/.config/ghostty/config:
+    ~/.config/ghostty:
         create: true
         path: ghostty
     ~/.config/mutt:
@@ -35,18 +35,27 @@
     ~/.config/vdirsyncer/config:
         create: true
         path: vdirsyncer/config
+    ~/.config/msmtp/config:
+        create: true
+        path: msmtp/config
+    ~/.config/jiratui/config.yaml:
+        create: true
+        path: jiratui/config.yaml
     ~/.config/vdirsyncer/get-username.sh: vdirsyncer/get-username.sh
     ~/.config/vdirsyncer/get-password.sh: vdirsyncer/get-password.sh
     ~/.config/khard:
         create: true
         path: khard
     ~/.mbsyncrc: mbsyncrc
+    ~/.taskrc: taskrc
     ~/.dotfiles: ''
     ~/.tmux.conf: tmux.conf
+    ~/.aerospace.toml: aerospace.toml
     ~/.tmux.conf.local: tmux.conf.local
     ~/.tmux: tmux
     ~/.zshrc: zshrc
     ~/.zprofile: zprofile
+    ~/.zshenv: zshenv
     ~/bin: bin
     ~/.bunches: bunches
     ~/.xinitrc:

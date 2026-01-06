@@ -3,12 +3,15 @@ export PROMPT='[%n@%m %c]$ '
 export HISTFILE=~/.zsh/histfile
 export HISTSIZE=50000
 export SAVEHIST=50000
+
 setopt autocd extendedglob nomatch HIST_IGNORE_ALL_DUPS
 unsetopt beep
 bindkey -v
 autoload -Uz compinit zmv zcalc colors
 compinit
 colors
+
+stty discard undef
 
 
 #######################################################
@@ -85,7 +88,8 @@ alias tms='tmux_session'
 alias wiki='vim ~/Nextcloud/wiki/index.md'
 alias lg='lazygit'
 alias ls='eza --icons=auto'
-alias atask='task +arundo'
+alias ti='task add +inbox'
+alias ta='task +arundo'
 
 #######################################################
 # Suffix aliases
@@ -118,7 +122,7 @@ function tmux_session {
 }
 
 eval "$(zoxide init --cmd cd zsh)"
-source "$HOME/.cargo/env"
+# source "$HOME/.cargo/env"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 

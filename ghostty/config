@@ -1,0 +1,8 @@
+macos-option-as-alt = right
+window-theme = system
+theme = dark:catppuccin-frappe.conf,light:catppuccin-latte.conf
+font-size = 13
+font-thicken = true
+font-family = JetBrains Mono
+
+background-opacity = 0.96
