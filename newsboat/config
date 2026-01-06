@@ -11,6 +11,9 @@ macro p set browser "newsboat-url2pdf.sh %u" ; open-in-browser ; set browser "op
 macro m set browser "/opt/homebrew/bin/mpv %u"; open-in-browser ; set browser "/usr/local/bin/w3m %u"
 macro e set browser "newsboat-url2html.sh %u > /tmp/readability.html && open /tmp/readability.html"; open-in-browser ; set browser "open %u"
 
+# play yt-video
+macro v set browser "mpv --ytdl-format=mp4 %u &>/dev/null&" ; open-in-browser-and-mark-read ;
+
 # general settings
 auto-reload yes
 max-items 50

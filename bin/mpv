@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/Applications/mpv.app/Contents/MacOS/mpv "$@"

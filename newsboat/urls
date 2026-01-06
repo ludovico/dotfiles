@@ -14,3 +14,7 @@ https://wallabag.ukorrekt.no/feed/eivind/Z0gxgNjPUuRe2aT/unread "Articles"
 
 "query:---TECH---:tags # \"Tech\""
 https://stackoverflow.blog/feed/ "Tech"
+
+"query:---YT---:tags # \"YouTube\""
+https://www.youtube.com/feeds/videos.xml?channel_id=UCjuKQCmKlCtrPL2wl1uIphQ YouTube # More Pegasus
+https://www.youtube.com/feeds/videos.xml?channel_id=UCqNkn5PNeSqbQTAR5RP-L-Q YouTube Cooking # Andy Cooks

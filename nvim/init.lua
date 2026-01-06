@@ -88,7 +88,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = ","
+vim.keymap.set("n", "<LocalLeader>,", ",")
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
@@ -403,10 +404,18 @@ require("lazy").setup({
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+			vim.keymap.set("n", "<leader>sf", function()
+				builtin.find_files({
+					hidden = true,
+				})
+			end, { desc = "[S]earch [F]iles" })
 			vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+			vim.keymap.set("n", "<leader>sg", function()
+				builtin.live_grep({
+					hidden = true,
+				})
+			end, { desc = "[S]earch by [G]rep" })
 			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 			vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
@@ -522,6 +531,7 @@ require("lazy").setup({
 					--  Useful when your language has ways of declaring types without an actual implementation.
 					map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 
+					map("gh", vim.diagnostic.open_float, "Show line diagnostic")
 					-- Jump to the type of the word under your cursor.
 					--  Useful when you're not sure what type a variable is and you want to see
 					--  the definition of its *type*, not where it was *defined*.
@@ -600,6 +610,8 @@ require("lazy").setup({
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
+			local nvim_lsp
+
 			-- Enable the following language servers
 			--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 			--
@@ -609,6 +621,8 @@ require("lazy").setup({
 			--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+			local lspconfig = require("lspconfig")
+			local util = require("lspconfig.util")
 			local servers = {
 				-- clangd = {},
 				-- gopls = {},
@@ -620,7 +634,30 @@ require("lazy").setup({
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				-- ts_ls = {},
+				denols = {
+					root_dir = util.root_pattern("deno.json", "deno.jsonc", "import_map.json"),
+					init_options = {
+						lint = true,
+						unstable = false,
+					},
+				},
+				ts_ls = {
+					root_dir = function(fname)
+						-- If we're in a Deno project, don't start ts_ls here
+						if util.root_pattern("deno.json", "deno.jsonc")(fname) then
+							return nil
+						end
+
+						-- Otherwise, use normal TS/JS project roots
+						return util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git")(fname)
+					end,
+
+					on_attach = function(client)
+						-- strongly recommended: avoid formatter fights
+						client.server_capabilities.documentFormattingProvider = false
+						client.server_capabilities.documentRangeFormattingProvider = false
+					end,
+				},
 				--
 
 				lua_ls = {
@@ -636,6 +673,31 @@ require("lazy").setup({
 							-- diagnostics = { disable = { 'missing-fields' } },
 						},
 					},
+				},
+				eslint = {
+					-- Find the nearest eslint config first; fall back to package.json / .git
+					root_dir = util.root_pattern(
+						"eslint.config.js",
+						".eslintrc",
+						".eslintrc.js",
+						".eslintrc.cjs",
+						".eslintrc.json",
+						"package.json",
+						".git"
+					),
+
+					settings = {
+						-- Critical for monorepos: choose the right package dir automatically
+						workingDirectories = { mode = "auto" },
+					},
+
+					on_attach = function(_, bufnr)
+						-- optional: fix on save (only triggers where eslint is active)
+						vim.api.nvim_create_autocmd("BufWritePre", {
+							buffer = bufnr,
+							command = "EslintFixAll",
+						})
+					end,
 				},
 			}
 
@@ -984,10 +1046,39 @@ end
 
 vim.cmd([[
 augroup vimtex_event_focus
-  autocmd!
-  autocmd User VimtexEventViewReverse call TexFocusVim()
+autocmd!
+autocmd User VimtexEventViewReverse call TexFocusVim()
 augroup END
 ]])
+
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "nc"
+
+-- =========================
+-- Neorg leader shortcuts
+-- =========================
+
+-- Workspace & navigation
+vim.keymap.set("n", "<leader>nw", "<cmd>Neorg workspace<CR>", { desc = "Neorg workspaces" })
+vim.keymap.set("n", "<leader>ni", "<cmd>Neorg index<CR>", { desc = "Neorg index" })
+vim.keymap.set("n", "<leader>nr", "<cmd>Neorg return<CR>", { desc = "Neorg return" })
+
+-- Journal
+vim.keymap.set("n", "<leader>nj", "<cmd>Neorg journal today<CR>", { desc = "Journal today" })
+vim.keymap.set("n", "<leader>nJ", "<cmd>Neorg journal yesterday<CR>", { desc = "Journal yesterday" })
+vim.keymap.set("n", "<leader>nN", "<cmd>Neorg journal tomorrow<CR>", { desc = "Journal tomorrow" })
+
+-- TODO states
+vim.keymap.set("n", "<leader>nt", "<cmd>Neorg todo done<CR>", { desc = "Mark done" })
+vim.keymap.set("n", "<leader>nT", "<cmd>Neorg todo pending<CR>", { desc = "Mark pending" })
+vim.keymap.set("n", "<leader>nh", "<cmd>Neorg todo on_hold<CR>", { desc = "Mark on-hold" })
+
+-- Utilities
+vim.keymap.set("n", "<leader>nm", "<cmd>Neorg mode norg<CR>", { desc = "Reload norg mode" })
+vim.keymap.set("n", "<leader>nq", "<cmd>Neorg toc<CR>", { desc = "Table of contents" })
+
+-- Deno improvements
+require("deno-nvim").setup({})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
