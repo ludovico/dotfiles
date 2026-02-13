@@ -1,0 +1,18 @@
+# Set default values for all following accounts.
+defaults
+auth           on
+tls            on
+tls_trust_file /opt/homebrew/etc/ca-certificates/cert.pem
+logfile        ~/.msmtp.log
+
+# Gmail
+account        eivind.skretting@mailbox.org
+host           smtp.mailbox.org
+port           587
+tls_starttls   on
+from           eivind.skretting@mailbox.org
+user           eivind.skretting@mailbox.org
+passwordeval   "pass eivind.skretting@mailbox.org | head -n1"
+
+# Set a default account
+account default: eivind.skretting@mailbox.org

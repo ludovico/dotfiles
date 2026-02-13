@@ -1,0 +1,58 @@
+# [Created by task 3.4.2 1/4/2026 01:50:16]
+data.location=/Users/eivind/.task
+news.version=3.4.2
+
+# To use the default location of the XDG directories,
+# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and update location config as follows:
+
+#data.location=~/.local/share/task
+#hooks.location=~/.config/task/hooks
+report.next.filter=status:pending -WAITING limit:page -inbox
+
+alias.inbox = all +inbox status:pending
+
+
+# Color theme (uncomment one to use)
+#include light-16.theme
+#include light-256.theme
+#include bubblegum-256.theme
+#include dark-16.theme
+#include dark-256.theme
+#include dark-red-256.theme
+#include dark-green-256.theme
+#include dark-blue-256.theme
+#include dark-violets-256.theme
+#include dark-yellow-green.theme
+#include dark-gray-256.theme
+#include dark-gray-blue-256.theme
+#include solarized-dark-256.theme
+#include solarized-light-256.theme
+#include no-color.theme
+
+# --- GTD-friendly urgency tweaks ---
+
+# Priorities (gentle, not extreme)
+urgency.priority.H=6
+urgency.priority.M=3
+urgency.priority.L=1
+
+# Due dates (matter, but don't panic early)
+urgency.due.coefficient=5
+urgency.due.factor=14
+
+# Waiting tasks should vanish
+urgency.wait.coefficient=-15
+
+# Someday/Maybe should never be next
+urgency.tag.someday.coefficient=-20
+
+# Active work contexts get a slight boost
+urgency.tag.work.coefficient=2
+urgency.tag.home.coefficient=1
+
+# Keep scheduled dates neutral
+urgency.scheduled.coefficient=0
+
+sync.server.url=https://taskwarrior.ukorrekt.no
+sync.server.client_id=$TASKWARRIOR_CLIENT_ID
+sync.encryption_secret=$TASKWARRIOR_ENCRYPTION_SECRET

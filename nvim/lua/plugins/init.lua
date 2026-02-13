@@ -9,6 +9,7 @@ return {
 	{ import = "plugins.languages" },
 	{ import = "plugins.tools" },
 	{ import = "plugins.notes" },
+	{ import = "plugins.ai" },
 	{ import = "kickstart.plugins.neo-tree" },
 	{ import = "custom.plugins" },
 }

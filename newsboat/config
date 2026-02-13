@@ -1,6 +1,12 @@
 # Set w3m as the browser for Newsboat
 browser "open %u"
 
+# Podcast settings
+download-path "~/Podcast/%N"
+download-filename-format "%F - %t.%e"
+player "mpv --no-audio-display"
+podlist-format      "%4i [%-5p %%] %-12S %F"
+
 # Macro to fetch full article text using readability-cli
 macro w set browser "newsboat-url2html.sh %u | w3m -T text/html" ; open-in-browser ; set browser "open %u"
 macro l set browser "newsboat-url2html.sh %u | w3m -T text/html -dump -cols 72 | LESSBINDINGS='h quit' less" ; open-in-browser ; set browser "open %u"
@@ -16,7 +22,7 @@ macro v set browser "mpv --ytdl-format=mp4 %u &>/dev/null&" ; open-in-browser-an
 
 # general settings
 auto-reload yes
-max-items 50
+max-items 500
 
 
 # unbind keys
