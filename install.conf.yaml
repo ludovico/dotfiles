@@ -8,6 +8,12 @@
         # recursive: true
 
 - link:
+    ~/.config/ccstatusline:
+        create: true
+        path: ccstatusline
+    ~/.claude:
+        create: true
+        path: claude
     ~/.config/nvim:
         create: true
         path: nvim

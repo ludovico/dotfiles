@@ -1,0 +1,108 @@
+{
+  "version": 3,
+  "lines": [
+    [
+      {
+        "id": "1",
+        "type": "context-length",
+        "color": "yellow",
+        "bold": true,
+        "rawValue": true,
+        "merge": "no-padding"
+      },
+      {
+        "id": "2",
+        "type": "custom-text",
+        "color": "brightBlack",
+        "customText": " (",
+        "merge": "no-padding"
+      },
+      {
+        "id": "3",
+        "type": "context-percentage",
+        "color": "brightBlack",
+        "rawValue": true,
+        "merge": "no-padding"
+      },
+      {
+        "id": "4",
+        "type": "custom-text",
+        "color": "brightBlack",
+        "customText": ")",
+        "merge": "no-padding"
+      },
+      {
+        "id": "546215f2-3f0e-4acc-9c28-d1a9ff4f19ce",
+        "type": "custom-text",
+        "color": "brightMagenta",
+        "customText": " | ",
+        "merge": "no-padding"
+      },
+      {
+        "id": "5645599a-ae4e-4b1a-922c-642893dba089",
+        "type": "git-branch",
+        "color": "cyan",
+        "merge": "no-padding"
+      },
+      {
+        "id": "181b2be0-235a-4c93-a0f2-582ff0020d54",
+        "type": "custom-text",
+        "color": "brightMagenta",
+        "customText": " | ",
+        "merge": "no-padding"
+      },
+      {
+        "id": "66db7abc-1e3f-4f69-bfd2-36f9437bc8df",
+        "type": "model",
+        "rawValue": true,
+        "merge": "no-padding"
+      },
+      {
+        "id": "693c4ab8-88e7-482b-839e-317c5d0e88c1",
+        "type": "custom-text",
+        "customText": " (",
+        "customSymbol": "(",
+        "merge": "no-padding"
+      },
+      {
+        "id": "dcd3f878-5929-41c8-b97d-4879d668f5fd",
+        "type": "thinking-effort",
+        "rawValue": true,
+        "merge": "no-padding"
+      },
+      {
+        "id": "51fa7e4d-f427-4627-b181-87dbba7706e4",
+        "type": "custom-symbol",
+        "customSymbol": ")"
+      },
+      {
+        "id": "871159e0-62fa-4741-86fa-3630aaf4f841",
+        "type": "weekly-usage"
+      }
+    ],
+    [],
+    []
+  ],
+  "flexMode": "full-minus-40",
+  "compactThreshold": 60,
+  "colorLevel": 3,
+  "defaultSeparator": " ",
+  "defaultPadding": " ",
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": false,
+    "separators": [
+      " "
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [],
+    "theme": "nord-aurora",
+    "autoAlign": true,
+    "continueThemeAcrossLines": true
+  }
+}
