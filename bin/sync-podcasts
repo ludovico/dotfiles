@@ -1,0 +1,9 @@
+#!/bin/bash
+
+RUNTIME_SECONDS=10
+
+pkill podboat
+tmux new-session -d -s hidden "podboat -a"
+sleep $RUNTIME_SECONDS
+tmux kill-session -t hidden
+

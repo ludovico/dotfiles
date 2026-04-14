@@ -31,7 +31,6 @@ https://feeds.castos.com/r30m3 "~Scaling Postgres" "feeds"
 https://www.omnycontent.com/d/playlist/d79bdbb3-8eae-4ad2-b1f6-b0bc00cd1540/934cbd67-03d3-4a50-8cdd-b149013ac5fc/86067dfc-d436-4194-a175-b149013ac6ef/podcast.rss "~Wolfgang Wee Uncut" "feeds"
 https://rss.buzzsprout.com/424075.rss "~DarkHorse Podcast" "feeds"
 https://historysmost.libsyn.com/rss "~History's Most" "feeds"
-https://samharris.org/subscriber-rss/?id=lt4hgy "~Making Sense with Sam Harris - Invalid feed" "feeds"
 https://feeds.transistor.fm/random-history "~Random History - The Comedy (or Tragedy) of Our Species" "feeds"
 https://rss.dw.com/xml/DKpodcast_lgn_de "~Langsam Gesprochene Nachrichten | Audios | DW Deutsch lernen" "feeds"
 https://www.swr3.de/~podcast/podcasts/wie-war-der-tag-liebling-100.xml "~Anke Engelke und Kristian Thees: Wie war der Tag, Liebling?" "feeds"
@@ -68,6 +67,7 @@ https://podkast.nrk.no/program/markus_og_wolfgang_snakker_klassisk.rss "~Markus 
 # NOT LONGER UPDATED
 # https://feeds.acast.com/public/shows/68358ff2998551779f248a35 "~Chinese Whispers" "feeds"
 # https://feeds.captivate.fm/the-canon-club/ "~The Canon Club" "feeds"
+# https://samharris.org/subscriber-rss/?id=lt4hgy "~Making Sense with Sam Harris - Invalid feed" "feeds"
 
 # MAYBE LATER
 # https://www.historyhub.ie/podcasts_old/xml/irishrev.xml "~The Irish Revolution" "feeds"

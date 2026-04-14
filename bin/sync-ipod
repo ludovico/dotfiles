@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Cleanup older podcast episodes
+find ~/Podcast -type f -mtime +30 -name "*.mp3" -delete;
+find ~/Podcast -type d -empty -delete
+
+
+# Exit early if target is not mounted
+if [ ! -d "/Volumes/IDAKAS IPOD" ]; then
+  echo "Error: Target '/Volumes/IDAKAS IPOD' is not mounted."
+  exit 1
+fi
+
+# Sync the Podcast and Audiobooks directories to the iPod
+rsync -avP --delete \
+  --exclude='.DS_Store' --exclude='._*' --exclude='.Spotlight-V100' --exclude='.Trashes' \
+  --filter='protect .rockbox/***' \
+  --filter='protect *.bmark' \
+  --filter='protect *.resume' \
+  ~/Podcast ~/Audiobooks /Volumes/IDAKAS\ IPOD/
+
+# Eject the iPod after syncing
+diskutil eject "IDAKAS IPOD"

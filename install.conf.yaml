@@ -11,6 +11,9 @@
     ~/.config/nvim:
         create: true
         path: nvim
+    ~/.config/direnv/direnvrc:
+        create: true
+        path: direnv/direnvrc
     ~/.config/gitignore:
         create: true
         path: gitignore
@@ -20,18 +23,12 @@
     ~/.config/mutt:
         create: true
         path: mutt
-    ~/.newsboat/config:
+    ~/.config/newsboat:
         create: true
-        path: newsboat/config
+        path: newsboat
     ~/.notmuch-config:
         create: true
         path: notmuch-config
-    ~/.newsboat/urls:
-        create: true
-        path: newsboat/urls
-    ~/.newsboat/styles:
-        create: true
-        path: newsboat/styles
     ~/.config/vdirsyncer/config:
         create: true
         path: vdirsyncer/config

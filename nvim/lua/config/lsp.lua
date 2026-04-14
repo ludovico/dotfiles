@@ -29,6 +29,17 @@ local function setup()
 
 	-- LSP server configurations
 	local servers = {
+		gopls = {
+			settings = {
+				gopls = {
+					analyses = {
+						unusedparams = true,
+					},
+					staticcheck = true,
+					gofumpt = true,
+				},
+			},
+		},
 		denols = {
 			root_dir = function(fname)
 				-- Only start denols if we're in a Deno project
@@ -180,6 +191,9 @@ local function setup()
 			map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 
 			map("gh", vim.diagnostic.open_float, "Show line diagnostic")
+
+			-- Show hover documentation
+			map("K", vim.lsp.buf.hover, "Hover Documentation")
 
 			-- Jump to the type of the word under your cursor.
 			map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
