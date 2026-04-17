@@ -37,7 +37,12 @@ return {
 		"nvim-neorg/neorg",
 		lazy = false,
 		version = "*",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-neorg/lua-utils.nvim",
+			"ysan3/pathlib.nvim",
+			"nvim-neotest/nvim-nio",
+		},
 		config = function()
 			require("neorg").setup({
 				load = {

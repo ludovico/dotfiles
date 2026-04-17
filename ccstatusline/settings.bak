@@ -51,10 +51,6 @@
         "customText": " | ",
         "merge": "no-padding"
       },
-      {
-        "id": "871159e0-62fa-4741-86fa-3630aaf4f841",
-        "type": "weekly-usage"
-      }
     ],
     [
       {
@@ -80,6 +76,10 @@
         "id": "51fa7e4d-f427-4627-b181-87dbba7706e4",
         "type": "custom-symbol",
         "customSymbol": ")"
+      },
+      {
+        "id": "871159e0-62fa-4741-86fa-3630aaf4f841",
+        "type": "weekly-usage"
       }
     ],
     []
