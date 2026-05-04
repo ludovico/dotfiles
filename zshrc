@@ -19,7 +19,7 @@ stty discard undef
 # 
 
 RUST_HOME="$HOME/.cargo/bin"
-PATH="$RUST_HOME/bin:$PATH"
+PATH="$RUST_HOME:$PATH"
 PYENV_ROOT="$HOME/.pyenv"
 PATH="$PYENV_ROOT/bin:$PATH"
 PATH="$PATH:$HOME/.dotfiles/bin"
@@ -117,11 +117,42 @@ alias -s PKGBUILD=$EDITOR
 # Funksjoner
 #
 
+# Show current working directories for processes matching a name.
+# Usage: pcwd pnpm
+pcwd() {
+  local name="$1"
+
+  if [[ -z "$name" ]]; then
+    echo "usage: pcwd <process-name>" >&2
+    return 2
+  fi
+
+  case "$(uname -s)" in
+    Darwin)
+      # macOS: lsof wants one PID per invocation here
+      pgrep "$name" | xargs -I{} lsof -a -d cwd -p {} | grep -v "^COMMAND"
+      ;;
+
+    Linux)
+      # Linux: /proc/<pid>/cwd is a symlink to the process PWD
+      for pid in $(pgrep "$name"); do
+        printf "%s: " "$pid"
+        readlink -f "/proc/$pid/cwd" 2>/dev/null || echo "<unreadable>"
+      done
+      ;;
+
+    *)
+      echo "unsupported OS: $(uname -s)" >&2
+      return 1
+      ;;
+  esac
+}
+
 function tmux_session {
   tmux attach -t $1 || tmux new -s $1
 }
 
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init --cmd z zsh)"
 # source "$HOME/.cargo/env"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
@@ -133,3 +164,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# load direnv
+eval "$(direnv hook zsh)"
+
