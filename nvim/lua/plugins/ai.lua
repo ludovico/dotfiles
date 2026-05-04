@@ -1,55 +1,47 @@
--- GitHub Copilot integration
--- Provides AI-powered code completions
+-- Ollama-powered autocomplete via minuet-ai.nvim
+-- Uses local qwen2.5-coder FIM model for Copilot-style ghost text
 
 return {
-	-- Main Copilot plugin
 	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
+		"milanglacier/minuet-ai.nvim",
 		event = "InsertEnter",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("copilot").setup({
-				suggestion = {
-					enabled = true,
-					auto_trigger = true,
-					debounce = 75,
+			require("minuet").setup({
+				provider = "openai_fim_compatible",
+				n_completions = 1,
+				context_window = 2048,
+				request_timeout = 3,
+				throttle = 400,
+				debounce = 200,
+				provider_options = {
+					openai_fim_compatible = {
+						api_key = "TERM",
+						name = "Ollama",
+						end_point = "http://localhost:11434/v1/completions",
+						model = "qwen2.5-coder:1.5b",
+						optional = {
+							max_tokens = 128,
+							top_p = 0.9,
+							stop = { "<|endoftext|>", "<|fim_prefix|>", "<|fim_middle|>", "<|fim_suffix|>", "<|file_sep|>" },
+						},
+					},
+				},
+				virtualtext = {
+					auto_trigger_ft = { "*" },
+					auto_trigger_ignore_ft = {
+						"yaml", "markdown", "help", "gitcommit",
+						"gitrebase", "hgcommit", "svn", "cvs",
+					},
 					keymap = {
 						accept = "<C-j>",
-						accept_word = "<C-l>",
 						accept_line = "<C-k>",
-						next = "<C-.>",
 						prev = "<C-,>",
+						next = "<C-.>",
 						dismiss = "<C-e>",
 					},
+					show_on_completion_menu = false,
 				},
-				panel = {
-					enabled = false,
-					auto_refresh = false,
-					keymap = {
-						jump_prev = "[[",
-						jump_next = "]]",
-						accept = "<CR>",
-						refresh = "gr",
-						open = "<M-CR>",
-					},
-					layout = {
-						position = "bottom",
-						ratio = 0.4,
-					},
-				},
-				filetypes = {
-					yaml = false,
-					markdown = false,
-					help = false,
-					gitcommit = false,
-					gitrebase = false,
-					hgcommit = false,
-					svn = false,
-					cvs = false,
-					["."] = false,
-				},
-				copilot_node_command = "node",
-				server_opts_overrides = {},
 			})
 		end,
 	},
