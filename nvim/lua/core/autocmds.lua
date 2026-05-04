@@ -9,7 +9,7 @@ local function setup()
 		desc = "Highlight when yanking (copying) text",
 		group = highlight_yank_group,
 		callback = function()
-			vim.highlight.on_yank()
+			vim.hl.on_yank()
 		end,
 	})
 

@@ -40,7 +40,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-neorg/lua-utils.nvim",
-			"ysan3/pathlib.nvim",
+			"pysan3/pathlib.nvim",
 			"nvim-neotest/nvim-nio",
 		},
 		config = function()
