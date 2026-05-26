@@ -154,17 +154,16 @@ function tmux_session {
 
 eval "$(zoxide init --cmd z zsh)"
 # source "$HOME/.cargo/env"
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 # pnpm
 export PNPM_HOME="/Users/eivind/Library/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
 
 # load direnv
 eval "$(direnv hook zsh)"
 
+eval "$(mise activate zsh)"

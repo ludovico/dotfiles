@@ -1,18 +1,27 @@
 
 config/nvim/.netrwhist
+.claude
 
 # Claude Code - ignore everything, whitelist config
 claude/*
 !claude/CLAUDE.md
 !claude/.caveman-active
 !claude/settings.json
-!claude/projects
+#!claude/projects
+!claude/skills
 claude/projects/*
-!claude/projects/*/memory
+#!claude/projects/*/memory
 claude/projects/*/memory/*
-!claude/projects/*/memory/*.md
+#!claude/projects/*/memory/*.md
 
 # Mac specific
 .DS_Store
 tmux/plugins
 !tmux/plugins/tpm
+
+# Newsboat specific
+newsboat/**/*.db
+newsboat/**/*.db.lock
+newsboat/**/history.*
+newsboat/**/queue
+
