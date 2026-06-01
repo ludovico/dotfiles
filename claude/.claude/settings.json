@@ -9,5 +9,6 @@
     "caveman@caveman": true,
     "frontend-design@claude-plugins-official": true
   },
-  "editorMode": "vim"
+  "editorMode": "vim",
+  "skipAutoPermissionPrompt": true
 }

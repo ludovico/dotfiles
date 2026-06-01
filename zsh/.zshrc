@@ -90,6 +90,7 @@ alias lg='lazygit'
 alias ls='eza --icons=auto'
 alias ti='task add +inbox'
 alias ta='task +arundo'
+alias prs='get_prs'
 
 #######################################################
 # Suffix aliases
@@ -150,6 +151,10 @@ pcwd() {
 
 function tmux_session {
   tmux attach -t $1 || tmux new -s $1
+}
+
+function get_prs {
+  gh search prs --review-requested=@me --state=open --json number,title,url,repository --jq '.[] | "\(.repository.nameWithOwner)#\(.number);\(.title);\(.url)"' | column -t -s ';'
 }
 
 eval "$(zoxide init --cmd z zsh)"

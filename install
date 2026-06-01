@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
-
 set -e
+cd "$(dirname "$0")"
 
-CONFIG="install.conf.yaml"
-DOTBOT_DIR="dotbot"
+PACKAGES=(
+  zsh tmux bin bunches mail task aerospace
+  nvim claude ccstatusline ghostty mutt newsboat khard
+  direnv gitignore vdirsyncer msmtp jiratui
+)
+[ "$(uname)" = Linux ] && PACKAGES+=(xinit)
 
-DOTBOT_BIN="bin/dotbot"
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if ! command -v stow >/dev/null; then
+  echo "GNU stow not found. Install: brew install stow"
+  exit 1
+fi
 
-cd "${BASEDIR}"
-git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive "${DOTBOT_DIR}"
-
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+stow -t "$HOME" -R --no-folding -v "${PACKAGES[@]}"
+ln -sfn "$PWD" "$HOME/.dotfiles"
+echo "Stow complete. Packages linked into \$HOME."

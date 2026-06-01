@@ -1,27 +1,52 @@
-
-config/nvim/.netrwhist
-.claude
+nvim/.config/nvim/.netrwhist
+nvim/.config/nvim/.claude/
 
 # Claude Code - ignore everything, whitelist config
-claude/*
-!claude/CLAUDE.md
-!claude/.caveman-active
-!claude/settings.json
-#!claude/projects
-!claude/skills
-claude/projects/*
-#!claude/projects/*/memory
-claude/projects/*/memory/*
-#!claude/projects/*/memory/*.md
+claude/.claude/*
+!claude/.claude/CLAUDE.md
+!claude/.claude/.caveman-active
+!claude/.claude/settings.json
+!claude/.claude/skills
+claude/.claude/projects/*
+claude/.claude/projects/*/memory/*
+
+# Stray dirs created when ~/.claude was a symlink pre-stow
+claude/projects
+claude/cache
+claude/backups
+claude/debug
+claude/file-history
+claude/paste-cache
+claude/plans
+claude/plugins
+claude/session-env
+claude/sessions
+claude/shell-snapshots
+claude/statsig
+claude/tasks
+claude/telemetry
+claude/todos
+claude/history.jsonl
+claude/stats-cache.json
+claude/mcp-needs-auth-cache.json
+claude/settings.json.bak
+claude/settings.json.orig
+claude/.caveman-active
+claude/CLAUDE.md
+claude/settings.json
+claude/skills
+
+# Literal ~ dirs (created by tools that expanded $HOME wrong)
+~/
 
 # Mac specific
 .DS_Store
-tmux/plugins
-!tmux/plugins/tpm
+tmux/.tmux/plugins/*
+!tmux/.tmux/plugins/tpm
+!tmux/.tmux/.gitkeep
 
 # Newsboat specific
-newsboat/**/*.db
-newsboat/**/*.db.lock
-newsboat/**/history.*
-newsboat/**/queue
-
+newsboat/.config/newsboat/**/*.db
+newsboat/.config/newsboat/**/*.db.lock
+newsboat/.config/newsboat/**/history.*
+newsboat/.config/newsboat/**/queue
