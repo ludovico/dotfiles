@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 
 PACKAGES=(
   zsh tmux bin bunches mail task aerospace
-  nvim claude ccstatusline ghostty mutt newsboat khard
+  nvim ccstatusline ghostty mutt newsboat khard
   direnv gitignore vdirsyncer msmtp jiratui
 )
 [ "$(uname)" = Linux ] && PACKAGES+=(xinit)
@@ -16,4 +16,12 @@ fi
 
 stow -t "$HOME" -R --no-folding -v "${PACKAGES[@]}"
 ln -sfn "$PWD" "$HOME/.dotfiles"
+
+# ~/.claude is a live data dir (history, projects, plugin cache), not a pure
+# config tree — so we don't stow it. Link the tracked config items only.
+mkdir -p "$HOME/.claude"
+for f in CLAUDE.md .caveman-active settings.json skills; do
+  ln -sfn "$PWD/claude/.claude/$f" "$HOME/.claude/$f"
+done
+
 echo "Stow complete. Packages linked into \$HOME."

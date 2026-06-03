@@ -3,7 +3,7 @@
 # Only removes symlinks whose target points into this repo. Real files left alone.
 # Dry-run by default; pass --apply to actually remove.
 set -e
-REPO="$(cd "$(dirname "$0")" && pwd)"
+REPO="$(cd "$(dirname "$0")" && pwd -P)"
 
 TARGETS=(
   "$HOME/.config/ccstatusline"
