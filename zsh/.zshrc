@@ -56,7 +56,7 @@ export EDITOR='vim'
 export GITPATH=`which git`
 export CARGO_HOME=$HOME/.cargo
 export FZF_DEFAULT_COMMAND='fd --type f'
-export NODE_COMPILE_CACHE="~/.cache/node-compile-cache"
+export NODE_COMPILE_CACHE="$HOME/.cache/node-compile-cache"
 
 #######################################################
 # Key bindings
