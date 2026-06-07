@@ -13,17 +13,16 @@ nvim/
 │   │   ├── keymaps.lua     # Core keybindings
 │   │   └── autocmds.lua    # Core autocommands
 │   ├── config/             # Configuration modules
-│   │   ├── lsp.lua        # LSP server configurations
-│   │   └── treesitter.lua  # Treesitter configuration
+│   │   └── lsp.lua        # LSP server configurations
 │   ├── plugins/            # Plugin configurations organized by category
 │   │   ├── init.lua       # Plugin loader (imports all plugin modules)
 │   │   ├── core.lua       # Essential plugins (telescope, which-key)
 │   │   ├── lsp.lua        # LSP-related plugins
 │   │   ├── ui.lua         # UI plugins (colorscheme, statusline)
-│   │   ├── editor.lua     # Editor enhancements (treesitter, autopairs)
+│   │   ├── editor.lua     # Editor enhancements (autopairs)
 │   │   ├── languages.lua  # Language-specific plugins
 │   │   ├── tools.lua      # Utility tools (git, file manager)
-│   │   └── notes.lua      # Note-taking plugins (vimwiki, neorg)
+│   │   └── notes.lua      # Note-taking plugins (vimwiki)
 │   ├── keymaps/           # Custom keymap modules
 │   │   └── custom.lua     # User-defined keybindings
 │   ├── custom/            # User customizations
@@ -61,16 +60,15 @@ Add them to `lua/custom/plugins/init.lua`
 
 ### Config (`lua/config/`)
 - **lsp.lua**: LSP server configurations and keymaps
-- **treesitter.lua**: Treesitter parser configurations
 
 ### Plugins (`lua/plugins/`)
 - **core.lua**: Essential plugins (sleuth, which-key, telescope)
 - **lsp.lua**: LSP plugins (lspconfig, mason, cmp, conform)
 - **ui.lua**: UI enhancements (colorscheme, todo-comments, mini.nvim)
-- **editor.lua**: Editor improvements (treesitter, autopairs)
+- **editor.lua**: Editor improvements (autopairs)
 - **languages.lua**: Language-specific plugins (deno, dart, vimtex)
 - **tools.lua**: Utility tools (gitsigns, lazygit, yazi)
-- **notes.lua**: Note-taking (vimwiki, neorg, taskwiki)
+- **notes.lua**: Note-taking (vimwiki)
 
 ## Keybindings
 
@@ -81,7 +79,7 @@ Add them to `lua/custom/plugins/init.lua`
 ### Common Keymaps
 - `<leader>s*` - Telescope search operations
 - `<leader>h*` - Git operations (via gitsigns)
-- `<leader>n*` - Neorg operations
+- `<leader>w*` - VimWiki operations
 - `<leader>lg` - LazyGit
 - `<leader>-` - Yazi file manager
 

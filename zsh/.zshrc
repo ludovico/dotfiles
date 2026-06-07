@@ -154,7 +154,8 @@ function tmux_session {
 }
 
 function get_prs {
-  gh search prs --review-requested=@me --state=open --json number,title,url,repository --jq '.[] | "\(.repository.nameWithOwner)#\(.number);\(.title);\(.url)"' | column -t -s ';'
+  echo excluding Technip projects
+  gh search prs --review-requested=@me --state=open --json number,title,url,repository --jq '.[] | "\(.repository.nameWithOwner)#\(.number);\(.title);\(.url)"' | column -t -s ';' | grep -v technip
 }
 
 eval "$(zoxide init --cmd z zsh)"

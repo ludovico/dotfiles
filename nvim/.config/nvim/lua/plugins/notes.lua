@@ -1,5 +1,5 @@
 -- Note-taking and documentation plugins
--- VimWiki, Neorg, TaskWiki, and related tools
+-- VimWiki and related tools
 
 return {
 	-- VimWiki
@@ -16,15 +16,6 @@ return {
 		end,
 	},
 
-	-- TaskWiki (TaskWarrior integration)
-	{
-		"tools-life/taskwiki",
-		lazy = false,
-		init = function()
-			vim.g.taskwiki_markup_syntax = "markdown"
-		end,
-	},
-
 	-- Bullets (markdown list management)
 	{
 		"bullets-vim/bullets.vim",
@@ -32,48 +23,34 @@ return {
 		enabled = false, -- Currently disabled
 	},
 
-	-- Neorg
+	-- Zen Mode (distraction-free writing)
 	{
-		"nvim-neorg/neorg",
-		lazy = false,
-		version = "*",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-neorg/lua-utils.nvim",
-			"pysan3/pathlib.nvim",
-			"nvim-neotest/nvim-nio",
+		"folke/zen-mode.nvim",
+		cmd = "ZenMode",
+		keys = {
+			{ "<leader>z", "<cmd>ZenMode<cr>", desc = "Toggle Zen Mode" },
 		},
-		config = function()
-			require("neorg").setup({
-				load = {
-					["core.defaults"] = {},
-					["core.concealer"] = {
-						config = {
-							icon_preset = "varied",
-						},
-					},
-					["core.dirman"] = {
-						config = {
-							workspaces = {
-								notes = "~/Nextcloud/neorg/notes",
-							},
-							default_workspace = "notes",
-						},
-					},
-					["core.journal"] = {
-						config = {
-							workspace = "notes",
-							journal_folder = "journal",
-							strategy = "flat",
-						},
-					},
-					["core.completion"] = {
-						config = {
-							engine = "nvim-cmp",
-						},
-					},
-				},
-			})
+		dependencies = { "folke/twilight.nvim" },
+		opts = {},
+	},
+
+	-- Twilight (dim inactive code)
+	{
+		"folke/twilight.nvim",
+		cmd = { "Twilight", "TwilightEnable", "TwilightDisable" },
+		opts = {
+			context = 10,
+			treesitter = false, -- no nvim-treesitter installed; fall back to expand/context
+			expand = { "function", "method", "table", "if_statement" },
+		},
+	},
+
+	-- Pencil (prose writing for markdown/wiki)
+	{
+		"preservim/vim-pencil",
+		ft = { "markdown", "vimwiki", "text" },
+		init = function()
+			vim.g["pencil#wrapModeDefault"] = "soft"
 		end,
 	},
 }

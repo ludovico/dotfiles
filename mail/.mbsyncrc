@@ -2,7 +2,7 @@ IMAPStore eivind.skretting@mailbox.org-remote
 Host imap.mailbox.org
 Port 993
 User eivind.skretting@mailbox.org
-PassCmd "pass eivind.skretting@mailbox.org"
+PassCmd "pass mailbox.org/personal"
 AuthMechs LOGIN
 TLSType IMAPS
 CertificateFile /etc/ssl/cert.pem
