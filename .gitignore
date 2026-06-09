@@ -45,6 +45,9 @@ tmux/.tmux/plugins/*
 !tmux/.tmux/plugins/tpm
 !tmux/.tmux/.gitkeep
 
+# Jiratui (contains API token)
+jiratui/.config/jiratui/config.yaml
+
 # Newsboat specific
 newsboat/.config/newsboat/**/*.db
 newsboat/.config/newsboat/**/*.db.lock
